@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  color: #1f2937;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom utility classes */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+  @apply px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-amber-500 text-white rounded-lg font-medium hover:bg-amber-600 transition-colors duration-200;
+}
+
+.btn-outline {
+  @apply px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors duration-200;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+}
+
+.heading-lg {
+  @apply text-3xl sm:text-4xl font-bold text-gray-900;
+}
+
+.heading-md {
+  @apply text-2xl sm:text-3xl font-bold text-gray-900;
+}
+
+.text-muted {
+  @apply text-gray-600;
+}
+
+.section-padding {
+  @apply py-12 sm:py-16 lg:py-20;
+}
