@@ -1,0 +1,102 @@
+/* ===========================
+   TravelX - Frontend CSS
+   Tech: HTML + CSS + Bootstrap
+   =========================== */
+
+:root {
+  --dark: #111;
+  --light: #fff;
+  --accent: #ffc107;
+  --muted: #6c757d;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f8f9fa;
+}
+
+.navbar-brand {
+  letter-spacing: 0.3px;
+}
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  color: var(--light);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.35)),
+    url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  font-weight: 800;
+}
+
+.section-title {
+  font-weight: 800;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.badge-custom {
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+}
+
+.custom-shadow {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.footer-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-link:hover {
+  color: var(--accent);
+}
+
+.page-header {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.35)),
+    url("https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 70px 0;
+}
+
+.page-header h1 {
+  font-weight: 800;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.2);
+}
+
+.btn-warning {
+  font-weight: 700;
+}
+
+.small-muted {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: 75vh;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
