@@ -64,7 +64,6 @@ const hotelSchema = new mongoose.Schema(
     destination: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Destination",
-      required: true,
     },
   },
   { timestamps: true }

@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors"
 import authRoutes from "./routes/auth.route.js"
 import bookingRoutes from "./routes/booking.route.js";
+import hotelRoutes from "./routes/hotel.route.js";
 
 import connectMongoDB from "./db/connectMongoDB.js";
 
@@ -26,6 +27,8 @@ app.use(express.urlencoded({ extended: true })); // to parse form data(urlencode
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/destinations", hotelRoutes);
+app.use("/api/hotels", hotelRoutes);
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
 	connectMongoDB();
