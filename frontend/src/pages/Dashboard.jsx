@@ -17,10 +17,16 @@ const Dashboard = () => {
 
   const fetchBookings = async () => {
     try {
+      console.log('Fetching bookings...');
       const response = await bookingAPI.getAll()
-      setBookings(response.data)
+      console.log('Bookings response:', response)
+      console.log('Bookings data:', response.data)
+      console.log('User info:', user);
+      setBookings(Array.isArray(response.data) ? response.data : [])
     } catch (error) {
       console.error('Failed to fetch bookings:', error)
+      console.error('Error details:', error.response?.data);
+      setBookings([])
     } finally {
       setLoading(false)
     }
@@ -104,12 +110,12 @@ const Dashboard = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="text-lg font-bold text-gray-900">
-                        {booking.hotelId?.name || 'Booking'}
+                        {booking.hotel?.name || 'Booking'}
                       </h3>
                       <div className="flex items-center gap-2 text-gray-600 mt-1">
                         <MapPin size={16} />
                         <span className="text-sm">
-                          {booking.hotelId?.location?.city}, {booking.hotelId?.location?.country}
+                          {booking.hotel?.location?.city}, {booking.hotel?.location?.country}
                         </span>
                       </div>
                     </div>
@@ -120,10 +126,10 @@ const Dashboard = () => {
 
                   <div className="mb-4 pb-4 border-b">
                     <p className="text-sm text-gray-600">
-                      <strong>Check-in:</strong> {new Date(booking.checkInDate).toLocaleDateString()}
+                      <strong>Check-in:</strong> {booking.checkInDate ? new Date(booking.checkInDate).toLocaleDateString() : 'N/A'}
                     </p>
                     <p className="text-sm text-gray-600">
-                      <strong>Check-out:</strong> {new Date(booking.checkOutDate).toLocaleDateString()}
+                      <strong>Check-out:</strong> {booking.checkOutDate ? new Date(booking.checkOutDate).toLocaleDateString() : 'N/A'}
                     </p>
                   </div>
 

@@ -11,6 +11,7 @@ import DestinationDetails from './pages/DestinationDetails'
 import Dashboard from './pages/Dashboard'
 import Favorites from './pages/Favorites'
 import ReviewPage from './pages/ReviewPage'
+import BookingForm from './pages/BookingForm'
 import AdminDashboard from './pages/Admin/AdminDashboard'
 import AddDestination from './pages/Admin/AddDestination'
 import About from './pages/About'
@@ -36,6 +37,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/review/:destinationId" element={<ReviewPage />} />
+            <Route path="/booking/:id" element={<BookingForm />} />
           </Route>
 
           {/* Admin Routes */}

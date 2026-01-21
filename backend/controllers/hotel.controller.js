@@ -43,7 +43,7 @@ export const getHotelById = async (req, res) => {
 
 export const createHotel = async (req, res) => {
   try {
-    const { name, description, location, images, pricePerNight, rating, amenities } = req.body;
+    const { name, description, location, images, pricePerNight, rating, amenities, maxGuests } = req.body;
 
     const hotel = new Hotel({
       name,
@@ -53,6 +53,7 @@ export const createHotel = async (req, res) => {
       pricePerNight,
       rating,
       amenities,
+      maxGuests: maxGuests || 4,
     });
 
     await hotel.save();

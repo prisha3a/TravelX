@@ -17,15 +17,15 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthStatus = async () => {
     try {
-      const token = localStorage.getItem('authToken')
-      if (token) {
-        // Optionally verify token with backend
-        setLoading(false)
-      } else {
-        setLoading(false)
+      const storedUser = localStorage.getItem('user')
+      if (storedUser) {
+        const userData = JSON.parse(storedUser)
+        setUser(userData)
       }
+      setLoading(false)
     } catch (err) {
       console.error('Auth check error:', err)
+      localStorage.removeItem('user')
       setLoading(false)
     }
   }
@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }) => {
         withCredentials: true,
       })
       setUser(response.data)
+      localStorage.setItem('user', JSON.stringify(response.data))
       return response.data
     } catch (err) {
       const errorMsg = err.response?.data?.error || 'Signup failed'
@@ -52,6 +53,7 @@ export const AuthProvider = ({ children }) => {
         withCredentials: true,
       })
       setUser(response.data)
+      localStorage.setItem('user', JSON.stringify(response.data))
       return response.data
     } catch (err) {
       const errorMsg = err.response?.data?.error || 'Login failed'
@@ -66,8 +68,11 @@ export const AuthProvider = ({ children }) => {
         withCredentials: true,
       })
       setUser(null)
+      localStorage.removeItem('user')
     } catch (err) {
       console.error('Logout error:', err)
+      setUser(null)
+      localStorage.removeItem('user')
     }
   }
 
@@ -78,7 +83,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     login,
     logout,
-    isAuthenticated: !!user || !!localStorage.getItem('authToken'),
+    isAuthenticated: !!user,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

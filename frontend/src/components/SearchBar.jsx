@@ -19,7 +19,7 @@ const SearchBar = ({ onSearch }) => {
           placeholder="Search destinations, cities, countries..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
         />
         <Search className="absolute left-4 text-gray-400" size={20} />
         <button

@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { MapPin, Star, Heart, Share2, ChevronLeft, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { destinationAPI } from '../services/api'
+import AvailabilityModal from '../components/AvailabilityModal'
 
 const DestinationDetails = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [destination, setDestination] = useState(null)
   const [loading, setLoading] = useState(true)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isFavorite, setIsFavorite] = useState(false)
+  const [showAvailability, setShowAvailability] = useState(false)
 
   useEffect(() => {
     fetchDestination()
@@ -229,11 +232,21 @@ const DestinationDetails = () => {
                     <p className="text-gray-600 text-sm">per night</p>
                   </div>
 
-                  <button className="btn-secondary w-full mb-3">Book Now</button>
+                  <button
+                    onClick={() => navigate(`/booking/${destination._id}`)}
+                    className="btn-secondary w-full mb-3"
+                  >
+                    Book Now
+                  </button>
                 </>
               )}
 
-              <button className="btn-outline w-full">Check Availability</button>
+              <button
+                onClick={() => setShowAvailability(true)}
+                className="btn-outline w-full"
+              >
+                Check Availability
+              </button>
 
               {/* Contact Info */}
               <div className="mt-8 pt-6 border-t">
@@ -245,6 +258,12 @@ const DestinationDetails = () => {
           </div>
         </div>
       </section>
+
+      <AvailabilityModal
+        isOpen={showAvailability}
+        onClose={() => setShowAvailability(false)}
+        destination={destination}
+      />
 
       <Footer />
     </>
